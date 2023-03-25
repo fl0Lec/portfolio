@@ -1,0 +1,21 @@
+.group {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 10ex 0 10ex;
+  display: none;
+}
+
+
+.title {
+  color: #0067a5;
+}
+p {
+  font-size: medium;
+}
+
+h1 {
+  font-size: xx-large;
+}
+h2 {
+  font-size: large;
+}

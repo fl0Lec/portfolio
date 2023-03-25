@@ -1,0 +1,69 @@
+name: "florent lecoultre"
+skills:
+  Network:
+    Internet:
+      - IPv4/6
+      - TCP/UDP
+      - HTML
+      - DHCP
+      - DNS
+    Routing:
+      - RIP
+      - ISIS
+      - OSPF
+      - BGP
+      - LFA
+    Wireless and IOT: 
+      - Wifi
+      - 802.15.4
+      - LoRaWAN
+  Systeme and Security:
+    Operating System:
+      - Linux
+      - Cisco IOS
+      - Junos OS
+    Virtualisation:
+      - Docker
+      - Quemu
+    Automation:
+      - Consul
+      - Nomad
+      - Kubernetes
+      - Bazel
+    Security and analysis:
+      - nmap
+      - tpcdump 
+      - iptables
+    Scripting:
+      - bash
+      - python
+    Database:
+      - PostgreSQL
+      - InfluxDB
+  General Porgramming:
+    C/C++, Python, Java, JS, P4 : []
+    Visualisation: 
+    - matplotlib 
+    - gnuplot
+    Data analysis: 
+    - Numpy
+    - Scipy 
+    - Pandas
+  Languages:
+    French: ["(native)"]
+    English: ["(B2/C1)"]
+    Spanish: ["(A2)"]
+
+
+    
+
+work:
+  cern:
+    from: 07/2022
+    to: 08/2022
+    title: intern at cern
+    where: CERN, Meyrin, Switzerland
+    description: >
+      Monitoring and generation of configuration for Network's equipment
+      on the LHCb experiment. The monitoring was done using Elastiflow
+      and the ELK stack.
