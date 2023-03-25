@@ -6,21 +6,29 @@
 <link rel="icon" href="/static/favicon.png">
 </head>
 <body>
+<h1> Florent Lecoultre </h1>
 
 <div class="skills">
+<h1>Skills</h1>
 {{- range $general, $skills := .Skills }}
-<div onclick="displayable('{{ $general}}', '')">
-<h1>{{ $general }}</h1>
+<div class="clickable" onclick="displayable('{{ $general}}', '')">
+<h2>{{ $general }}</h2>
 </div>
+
 {{- range $detail, $li := $skills}}
-<div class="{{ $general }}" onclick="displayable('group {{ $detail }}', 'flex')">
-<h2 class="title">{{$detail}}</h2>
+{{- if gt (len $li) 0}}
+<div class="{{ $general }} clickable" onclick="displayable('group {{ $detail }}', 'flex')" style="display: none">
+<h3 class="title">{{$detail}}</h3>
 </div>
-{{ if gt (len $li) 0}}
-<div class="group {{ $detail }}" style="display: none">
-{{- range $i, $s := $li }}
-  <p>{{$s}}</p>
+{{- else }}
+<h3 class="{{ $general }} title" style="display: none">{{$detail}}</h3>
 {{- end }}
+
+{{ if gt (len $li) 0}}
+<div class="group {{ $detail }} {{ $general }}" style="display: none">
+  {{- range $i, $s := $li }}
+  <p>{{$s}}</p>
+  {{- end }}
 </div>
 {{- end }}
 {{- end }}
@@ -32,7 +40,8 @@ function displayable(cls, display) {
   var els = document.getElementsByClassName(cls);
   for (var i=0; i<els.length; i++ ){
     var x = els[i]
-    if (x.style.display === "none") {
+    console.log(x.style, "|", x.style.display)
+    if (x.style.display == "none" || (display!='' && x.style.display=='')) {
       x.style.display = display;
     } else {
       x.style.display = "none";

@@ -12,10 +12,17 @@
 p {
   font-size: medium;
 }
-
 h1 {
   font-size: xx-large;
 }
+
 h2 {
+  font-size: xx-large;
+}
+h3 {
   font-size: large;
+}
+
+.clickable {
+  cursor: pointer;
 }
