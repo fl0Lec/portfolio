@@ -1,8 +1,9 @@
 .group {
+  display: flex;
+  flex: auto;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin: 0 10ex 0 10ex;
-  display: none;
+  margin: auto;
 }
 
 
@@ -10,7 +11,7 @@
   color: #0067a5;
 }
 p {
-  font-size: medium;
+  font-size: small;
 }
 h1 {
   font-size: xx-large;
@@ -21,6 +22,17 @@ h2 {
 }
 h3 {
   font-size: large;
+}
+h4 {
+  font-size: medium;
+}
+
+.flex {
+  display: flex;
+  flex: auto;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  flex-basis: 80%;
 }
 
 .clickable {

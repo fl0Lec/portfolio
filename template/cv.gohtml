@@ -17,18 +17,18 @@
 
 {{- range $detail, $li := $skills}}
 {{- if gt (len $li) 0}}
-<div class="{{ $general }} clickable" onclick="displayable('group {{ $detail }}', 'flex')" style="display: none">
-<h3 class="title">{{$detail}}</h3>
-</div>
+<div class="{{ $general }} clickable flex" onclick="displayable('group {{ $detail }}', '')" style="display: none">
+<h4 class="title">{{$detail}}</h4>
 {{- else }}
-<h3 class="{{ $general }} title" style="display: none">{{$detail}}</h3>
+<h4 class="{{ $general }} title" style="display: none">{{$detail}}</h4>
 {{- end }}
 
 {{ if gt (len $li) 0}}
-<div class="group {{ $detail }} {{ $general }}" style="display: none">
+<div class="group {{ $detail }}" style="display: none">
   {{- range $i, $s := $li }}
   <p>{{$s}}</p>
   {{- end }}
+</div>
 </div>
 {{- end }}
 {{- end }}
