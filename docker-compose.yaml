@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  cvhandler:
+    build: .
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.flecoultre.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.flecoultre.entrypoints=websecure"
+      - "traefik.http.routers.flecoultre.tls.certresolver=myresolver"
+      - "traefik.http.routers.flecoultre.tls=true"
+      - "traefik.http.services.flecoultre.loadbalancer.server.port=${PORT}"
+    environment:
+      - "APP_PORT=${PORT}"
+    volumes:
+      - "./static:/app/static"
+
+  traefik:
+    image: "traefik:v2.10"
+    container_name: "traefik"
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      # global redirect https
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      # generate certificate using lets encrypt
+      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.myresolver.acme.email=${MAIL}"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - cvhandler
+    volumes:
+      - "./letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
